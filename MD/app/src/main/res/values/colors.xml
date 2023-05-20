@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="pc">#64483D</color>
+    <color name="sc">#A4D0A4</color>
+    <color name="info_c">#4C98FF</color>
+    <color name="success_c">#2DED7E</color>
+    <color name="warning_c">#FFD042</color>
+    <color name="alert_c">#FF4068</color>
+    <color name="add_1">#9E8179</color>
+    <color name="add_2">#054624</color>
+    <color name="add_3">#FFF8D6</color>
+
+
+</resources>
