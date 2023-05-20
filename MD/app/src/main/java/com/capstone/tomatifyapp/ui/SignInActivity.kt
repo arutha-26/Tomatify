@@ -1,7 +1,8 @@
-package com.capstone.tomatifyapp
+package com.capstone.tomatifyapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.capstone.tomatifyapp.R
 
 class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

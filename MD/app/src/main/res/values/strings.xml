@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Tomatify App</string>
+    <string name="welcome_nback">Welcome \nBack!</string>
+    <string name="tomatobg">tomatobg</string>
+    <string name="email">Email</string>
+    <string name="input_your_email">Input your Email…</string>
+    <string name="password">Password</string>
+    <string name="input_your_password">Input your Password..</string>
+    <string name="sign_in">Sign In</string>
+    <string name="not_a_member">Not a member? </string>
+    <string name="join_now"> Join now!</string>
+    <string name="create_an_naccount">Create an\nAccount</string>
+    <string name="register">Register</string>
+    <string name="sign_in_now"> Sign in now!</string>
+    <string name="already_have_an_account">Already have an Account? </string>
+    <string name="name">Name</string>
+    <string name="input_your_name">Input your name…</string>
 </resources>
