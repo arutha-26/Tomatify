@@ -15,4 +15,10 @@
     <string name="already_have_an_account">Already have an Account? </string>
     <string name="name">Name</string>
     <string name="input_your_name">Input your name…</string>
+    <string name="username">UserName</string>
+    <string name="discuss_caption">Discuss caption</string>
+    <string name="avatar">avatar</string>
+    <string name="password_can_t_be_lower_than_8_characters">Password must be more than 8 characters!</string>
+    <string name="txt_go_back">Log</string>
+    <string name="txt_goback">Back</string>
 </resources>

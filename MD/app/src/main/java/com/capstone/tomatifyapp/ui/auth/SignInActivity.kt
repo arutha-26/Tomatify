@@ -1,4 +1,4 @@
-package com.capstone.tomatifyapp.ui
+package com.capstone.tomatifyapp.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
