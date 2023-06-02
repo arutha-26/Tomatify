@@ -1,8 +1,8 @@
 @file:Suppress("DEPRECATION")
 
-package com.capstone.tomatifyapp
+package com.capstone.tomatifyapp.ui
 
-
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -11,12 +11,14 @@ import android.preference.PreferenceManager
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.capstone.tomatifyapp.ui.auth.SignInActivity
-import com.capstone.tomatifyapp.ui.main.HomeActivity
+import com.capstone.tomatifyapp.R
 import com.capstone.tomatifyapp.utils.PREF_TOKEN
+import com.capstone.tomatifyapp.ui.auth.LoginActivity
+import com.capstone.tomatifyapp.ui.main.HomeActivity
 
 
-class MainActivity : AppCompatActivity() {
+@SuppressLint("CustomSplashScreen")
+class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,13 +29,14 @@ class MainActivity : AppCompatActivity() {
         // Using handler with postDelayed called runnable run method
         {
 
-            val token = PreferenceManager.getDefaultSharedPreferences(this@MainActivity).getString(PREF_TOKEN, "")
+            val token = PreferenceManager.getDefaultSharedPreferences(this@SplashScreenActivity).getString(
+                PREF_TOKEN, "")
             if (!token.isNullOrEmpty()){
-                val i = Intent(this@MainActivity, HomeActivity::class.java)
+                val i = Intent(this@SplashScreenActivity, HomeActivity::class.java)
                 startActivity(i)
                 finish()
             } else {
-                val i = Intent(this@MainActivity, SignInActivity::class.java)
+                val i = Intent(this@SplashScreenActivity, LoginActivity::class.java)
                 startActivity(i)
                 finish()
             }

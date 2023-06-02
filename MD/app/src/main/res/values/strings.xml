@@ -3,7 +3,7 @@
     <string name="welcome_nback">Welcome \nBack!</string>
     <string name="tomatobg">tomatobg</string>
     <string name="email">Email</string>
-    <string name="input_your_email">Input your Email…</string>
+    <string name="input_your_email">Input your Email..</string>
     <string name="password">Password</string>
     <string name="input_your_password">Input your Password..</string>
     <string name="sign_in">Sign In</string>
@@ -14,11 +14,17 @@
     <string name="sign_in_now"> Sign in now!</string>
     <string name="already_have_an_account">Already have an Account? </string>
     <string name="name">Name</string>
-    <string name="input_your_name">Input your name…</string>
+    <string name="input_your_name">Input Your Name..</string>
     <string name="username">UserName</string>
     <string name="discuss_caption">Discuss caption</string>
     <string name="avatar">avatar</string>
     <string name="password_can_t_be_lower_than_8_characters">Password must be more than 8 characters!</string>
-    <string name="txt_go_back">Log</string>
     <string name="txt_goback">Back</string>
+    <string name="email_invalid">Email Invalid</string>
+    <string name="name_invalid">Name Invalid</string>
+    <string name="register_success">Register Success</string>
+    <string name="password_are_not_the_same">Password are not the same</string>
+    <string name="email_is_already_taken">This email is already taken!</string>
+    <string name="error_register">Error Register</string>
+    <string name="signin_failed">Sign In Failed</string>
 </resources>
