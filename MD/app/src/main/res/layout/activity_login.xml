@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient_color"
-    tools:context=".ui.auth.RegisterActivity">
+    tools:context=".ui.auth.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -20,13 +20,14 @@
         tools:ignore="VisualLintBounds" />
 
     <TextView
-        android:id="@+id/textView"
+        android:alpha="0"
+        android:id="@+id/txtwelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/create_an_naccount"
+        android:text="@string/welcome_nback"
         android:textColor="@color/pc"
         android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -46,60 +47,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/title_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="320dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="@string/name"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/edRegisterName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_edit_text"
-                android:textSize="12sp"
-                android:hint="@string/input_your_name"
-                android:importantForAutofill="no"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_name"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="35dp" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/title_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="323dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="75dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="@string/email"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edRegisterName" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.capstone.tomatifyapp.ui.custom_ui.CustomEmailEditText
-                android:id="@+id/edRegisterEmail"
+                android:alpha="0"
+                android:id="@+id/ed_signin_email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_edit_text"
-                android:fontFamily="@font/montserrat_regular"
+                android:fontFamily="@font/montserrat_bold"
                 android:hint="@string/input_your_email"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -107,147 +79,114 @@
                 app:layout_constraintTop_toBottomOf="@+id/title_email" />
 
             <TextView
+                android:alpha="0"
                 android:id="@+id/title_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="320dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="@string/password"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edRegisterEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/ed_signin_email" />
 
             <com.capstone.tomatifyapp.ui.custom_ui.CustomPasswordEditText
-                android:id="@+id/edRegisterPassword"
+                android:alpha="0"
+                android:id="@+id/ed_signin_password"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="35dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_edit_text"
-                android:fontFamily="@font/montserrat_regular"
-                android:hint="@string/input_your_password"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_password" />
-
-            <TextView
-                android:id="@+id/title_confirm_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="320dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/password"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edRegisterEmail" />
-
-            <com.capstone.tomatifyapp.ui.custom_ui.CustomPasswordEditText
-                android:id="@+id/edRegisterPasswordConfirm"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="35dp"
-                android:background="@drawable/bg_edit_text"
-                android:fontFamily="@font/montserrat_regular"
                 android:hint="@string/input_your_password"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_password" />
 
             <com.capstone.tomatifyapp.ui.custom_ui.CustomButton
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnSignIn"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="35dp"
-                android:alpha="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="16dp"
+                android:alpha="0"
                 android:enabled="false"
                 android:fontFamily="@font/montserrat_black"
-                android:text="@string/register"
+                android:text="@string/sign_in"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edRegisterPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/ed_signin_password" />
 
             <TextView
                 android:id="@+id/notmember"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="54dp"
+                android:layout_marginStart="112dp"
+                android:layout_marginTop="40dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_medium"
-                android:text="@string/already_have_an_account"
+                android:text="@string/not_a_member"
                 android:textAlignment="textEnd"
                 android:textColor="#8D6E63"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnRegister"
-                app:layout_constraintVertical_bias="0.6" />
+                app:layout_constraintTop_toBottomOf="@+id/btnSignIn"
+                app:layout_constraintVertical_bias="0.246" />
 
             <TextView
-                android:id="@+id/tv_Signin"
+                android:id="@+id/tv_Regis"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="54dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="40dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_bold"
                 android:paddingStart="5dp"
-                android:text="@string/sign_in_now"
+                android:text="@string/join_now"
                 android:textAlignment="textStart"
                 android:textColor="@color/add_2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/notmember"
-                app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+                app:layout_constraintTop_toBottomOf="@+id/btnSignIn"
+                app:layout_constraintVertical_bias="0.248"
                 tools:ignore="RtlSymmetry" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
-
     <RelativeLayout
         android:id="@+id/rlLoading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="411dp"
+        android:layout_marginBottom="914dp"
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/black"/>
+            android:background="@color/black" />
 
         <ProgressBar
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
     </RelativeLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
