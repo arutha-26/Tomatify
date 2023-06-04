@@ -27,4 +27,11 @@
     <string name="email_is_already_taken">This email is already taken!</string>
     <string name="error_register">Error Register</string>
     <string name="signin_failed">Sign In Failed</string>
+    <string name="scanbutton">scanbutton</string>
+    <string name="welcome_msg">Welcome\nBack!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="news_tittle">News Tittle</string>
+    <string name="desc_news">Lörem ipsum anang jäbelt det vill säga dissade, planing dong. Biment aling kavis tesa kärlekslås.</string>
+    <string name="date_or_source">detikFinanceRabu, 31 Mei 2023 17:45 WIB</string>
 </resources>
