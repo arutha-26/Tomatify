@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const connection = require('../db');
 const transporter = require('../mailer');
+<<<<<<< HEAD
 const fs = require('fs');
 const path = require('path');
 
@@ -67,6 +68,61 @@ module.exports = {
 
       // logic verify
   verify: (req, res) => {
+=======
+
+module.exports = {
+    // logic verify
+    register : (req, res) => {
+        const { name, email, password } = req.body;
+        const verificationToken = crypto.randomBytes(20).toString('hex');
+      
+        // Check if email already exists in the database
+        connection.query('SELECT * FROM users WHERE email = ?', email, (err, result) => {
+          if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Failed to register user' });
+          }
+      
+          // If email already exists, return an error response
+          if (result.length > 0) {
+            return res.status(400).json({ message: 'Email already exists' });
+          }
+      
+          const newUser = {
+            name,
+            email,
+            password,
+            verification_token: verificationToken,
+            is_verified: false
+          };
+      
+          connection.query('INSERT INTO users SET ?', newUser, (err, result) => {
+            if (err) {
+              console.error(err);
+              return res.status(500).json({ message: 'Failed to register user' });
+            }
+            
+            // TODO ubah link sesuaikan dengan link deploy pertama 
+            const verificationLink = `http://localhost:3000/verify?token=${verificationToken}`;
+      
+            transporter.sendMail({
+              to: email,
+              subject: 'Account Verification',
+              html: `Click <a href="${verificationLink}">here</a> to verify your account.`
+            }, (error) => {
+              if (error) {
+                console.error(error);
+                return res.status(500).json({ message: 'Failed to send verification email' });
+              }
+              res.status(200).json({ message: 'User registered successfully. Please check your email for verification.' });
+            });
+          });
+        });
+      }, 
+
+      // logic verify
+      verify : (req, res) => {
+>>>>>>> 2024d72d6cfb9237e3292ecc88f4fc115c9e9d45
         const { token } = req.query;
       
         connection.query('UPDATE users SET is_verified = true WHERE verification_token = ?', token, (err, result) => {
@@ -74,6 +130,7 @@ module.exports = {
             console.error(err);
             return res.status(500).json({ message: 'Failed to verify account' });
           }
+<<<<<<< HEAD
       
           const htmlPath = path.join(__dirname, '/html/verification.html');
           const htmlContent = fs.readFileSync(htmlPath, 'utf-8');
@@ -84,6 +141,14 @@ module.exports = {
 
       // logic login 
   login : (req, res) => {
+=======
+          res.status(200).json({ message: 'Account verified successfully' });
+        });
+      }, 
+
+      // logic login 
+      login : (req, res) => {
+>>>>>>> 2024d72d6cfb9237e3292ecc88f4fc115c9e9d45
         const { email, password } = req.body;
       
         connection.query('SELECT * FROM users WHERE email = ?', email, (err, result) => {
@@ -120,6 +185,12 @@ module.exports = {
           
             res.status(200).json({ message: 'Logged in successfully' });
           });
+<<<<<<< HEAD
         });
   }
+=======
+      
+        });
+      }
+>>>>>>> 2024d72d6cfb9237e3292ecc88f4fc115c9e9d45
 }
