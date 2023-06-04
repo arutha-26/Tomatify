@@ -1,3 +1,4 @@
+'use stric'
 const express = require('express');
 const routes = require('./router/endpoin');
 const app = express();

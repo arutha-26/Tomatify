@@ -33,7 +33,8 @@ module.exports = {
               console.error(err);
               return res.status(500).json({ message: 'Failed to register user' });
             }
-      
+            
+            // TODO ubah link sesuaikan dengan link deploy pertama 
             const verificationLink = `http://localhost:3000/verify?token=${verificationToken}`;
       
             transporter.sendMail({

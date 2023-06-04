@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
+  // TODO ubah, sesuaikan dengan database di cloud anda 
   host: 'localhost',
   user: 'root',
   password: '',
