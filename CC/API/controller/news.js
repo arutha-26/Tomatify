@@ -11,28 +11,16 @@ module.exports = {
       $('article').each((index, element) => {
         const title = $(element).find('h2.title').text().trim();
         const url = $(element).find('a').attr('href');
-<<<<<<< HEAD
         const image = $(element).find('.box_thumb img').attr('src');
         const date = $(element).find('.date').text().trim();
         const category = $(element).find('.category').text().trim();
-=======
-        const date = $(element).find('.date').text().trim();
-        const category = $(element).find('.category').text().trim();
-        const image = $(element).find('.box_thumb img').attr('src');
->>>>>>> 2024d72d6cfb9237e3292ecc88f4fc115c9e9d45
 
         results.push({
           title,
           url,
-<<<<<<< HEAD
           image,
           date,
           category,
-=======
-          date,
-          category,
-          image,
->>>>>>> 2024d72d6cfb9237e3292ecc88f4fc115c9e9d45
         });
       });
 
