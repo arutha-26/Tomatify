@@ -11,8 +11,8 @@ module.exports = {
       $('article').each((index, element) => {
         const title = $(element).find('h2.title').text().trim();
         const url = $(element).find('a').attr('href');
-        const image = $(element).find('.box_thumb img').attr('src');
         const date = $(element).find('.date').text().trim();
+        const image = $(element).find('.box_thumb img').attr('src');
         const category = $(element).find('.category').text().trim();
 
         results.push({
