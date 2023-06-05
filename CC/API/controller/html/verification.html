@@ -1,18 +1,77 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        padding: 20px;
-      }
-      h1 {
-        color: #333;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify Success</title>
   </head>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Muli:300,700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fbfcfe;
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  background-image: url(https://storage.googleapis.com/simpan_gambar_html/pexels-math-21393.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 1000px;
+  text-align: center;
+}
+
+
+.info {
+  background-color: #eaeaea;
+  display: inline-block;
+  padding: 10px;
+  line-height: 20px;
+  max-width: 400px;
+  color: #777;
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .code-container {
+    flex-wrap: wrap;
+  }
+
+  .code {
+    font-size: 60px;
+    height: 50px;
+    max-width: 30px;
+  }
+}
+  </style>
+
   <body>
-    <h1>akun anda berhasil di verifikasi</h1>
-    <p>silahkan login ke aplikasi anda</p>
+    <div class="container">
+      <h1>Verifikasi Berhasil</h1>
+      <p>
+        "Verifikasi email berhasil! Anda sekarang dapat mengakses semua fitur dan manfaat yang kami sediakan."
+      </p>
+      <div class="code-container">
+        <img src="https://storage.googleapis.com/simpan_gambar_html/tick.png" height="200px" width="200px">
+      </div>
+      <small class="info">
+        Manfaatkan semua fitur yang tersedia di aplikasi Tomatify untuk menjaga tomatmu agar tetap sehat
+      </small>
+    </div>
   </body>
 </html>
