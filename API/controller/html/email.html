@@ -1,0 +1,70 @@
+<html>
+<head>
+  <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        padding: 20px;
+        margin: 0;
+      }
+
+      /* Container */
+      .verification-container {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+      }
+
+      /* Heading */
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* Verification Button */
+      .verification-button {
+        display: flex;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .verification-button:hover {
+        background-color: #45a049;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .verification-container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+
+        .verification-button {
+          padding: 8px 16px;
+        }
+      }
+
+  </style>
+
+</head>
+  <body>
+    <h1>Verifikasi akun anda</h1>
+    <button class="verification-button">
+      <a href="{verificationLink}" class="verification-link">Klik disini untuk verifikasi akun Anda</a>
+    </button>
+  </body>
+</html>
