@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 runtime: nodejs18
-=======
-runtime: nodejs10
->>>>>>> 2024d72d6cfb9237e3292ecc88f4fc115c9e9d45
 service: API
