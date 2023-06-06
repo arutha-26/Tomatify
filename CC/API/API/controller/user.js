@@ -36,7 +36,6 @@ module.exports = {
           return res.status(500).json({ message: 'Failed to register user' });
         }
   
-        // TODO: Ubah link sesuai dengan link deploy pertama
         const verificationLink = `http://localhost:3000/verify?token=${verificationToken}`;
         
         const verificationHtmlPath = path.join(__dirname, '/html/email.html');
@@ -64,7 +63,7 @@ module.exports = {
         });
       });
     });
-      },
+  },
 
       // logic verify
   verify: (req, res) => {
@@ -81,7 +80,7 @@ module.exports = {
       
           res.status(200).send(htmlContent);
         });
-      },
+  },
 
       // logic login 
   login : (req, res) => {
@@ -122,5 +121,5 @@ module.exports = {
             res.status(200).json({ message: 'Logged in successfully' });
           });
         });
-      }
+  }
 }

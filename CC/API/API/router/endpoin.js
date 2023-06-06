@@ -17,5 +17,4 @@ router.use(uploadImg);
 router.get('/newsLokal', news.newsLokal);
 router.get('/newsInter', news.newsinter);
 
-
 module.exports = router;
