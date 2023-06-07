@@ -25,8 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         hideActionBar()
 
-        Handler().postDelayed(Runnable
-        // Using handler with postDelayed called runnable run method
+        Handler().postDelayed(
         {
 
             val token = PreferenceManager.getDefaultSharedPreferences(this@SplashScreenActivity).getString(
