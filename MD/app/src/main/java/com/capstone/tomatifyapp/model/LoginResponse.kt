@@ -9,5 +9,7 @@ data class LoginResponse(
     @SerializedName("loginResult")
     var loginResult: LoginResult? = null,
     @SerializedName("message")
-    var message: String
+    var message: String,
+    @SerializedName("token")
+    var token: String
 )

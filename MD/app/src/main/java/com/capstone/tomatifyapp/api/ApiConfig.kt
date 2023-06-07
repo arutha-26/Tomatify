@@ -17,7 +17,7 @@ import javax.inject.Named
     object ApiConfig {
 
         @JvmField
-        val BASE_URL = "https://story-api.dicoding.dev/v1/"
+        val BASE_URL = "https://api-dot-bharata.et.r.appspot.com/"
 
         @JvmField
         val NEWS_URL = "https://news2-dot-deploynwes.et.r.appspot.com/"

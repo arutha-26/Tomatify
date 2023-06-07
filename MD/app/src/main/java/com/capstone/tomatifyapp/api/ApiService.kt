@@ -20,7 +20,7 @@ interface ApiService {
     fun register(@Body user: UserModel): Call<ResponseGeneral>
 
     @GET("newsInter")
-    suspend fun getInternational(@Query("title") title: String): Response<List<NewsModel>>
+    suspend fun getInternational() : List<NewsModel>
 
     @GET("newsLokal")
     suspend fun getNational(): List<NewsModel>
