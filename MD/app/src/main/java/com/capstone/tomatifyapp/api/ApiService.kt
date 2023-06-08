@@ -1,13 +1,9 @@
 package com.capstone.tomatifyapp.api
 
-import com.capstone.tomatifyapp.model.*
-import com.capstone.tomatifyapp.model.LoginResponse
 //import com.capstone.tomatifyapp.model.ResponseDetailStory
-import com.capstone.tomatifyapp.model.ResponseGeneral
 //import com.capstone.tomatifyapp.model.ResponseListStory
-import com.capstone.tomatifyapp.model.UserModel
+import com.capstone.tomatifyapp.model.*
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiService {
@@ -20,8 +16,8 @@ interface ApiService {
     fun register(@Body user: UserModel): Call<ResponseGeneral>
 
     @GET("newsInter")
-    suspend fun getInternational() : List<NewsModel>
+    fun getInternationalNews() : Call<NewsResponse>
 
     @GET("newsLokal")
-    suspend fun getNational(): List<NewsModel>
+    fun getLocalNews(): Call<NewsResponse>
 }

@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstone.tomatifyapp.R
 import com.capstone.tomatifyapp.ui.main.HomeActivity
 import com.capstone.tomatifyapp.utils.PREF_TOKEN
-import com.capstone.tomatifyapp.ui.auth.LoginActivity
 
 
 @SuppressLint("CustomSplashScreen")
@@ -35,7 +34,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 startActivity(i)
                 finish()
             } else {
-                val i = Intent(this@SplashScreenActivity, LoginActivity::class.java)
+                val i = Intent(this@SplashScreenActivity, HomeActivity::class.java)
                 startActivity(i)
                 finish()
             }

@@ -2,7 +2,7 @@ package com.capstone.tomatifyapp.model
 
 import com.google.gson.annotations.SerializedName
 
-data class NewsModel(
+data class NewsItem(
 
     @field:SerializedName("title")
     val title: String,

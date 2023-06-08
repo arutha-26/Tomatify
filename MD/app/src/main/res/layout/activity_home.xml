@@ -15,6 +15,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:alpha="1"
+            android:id="@+id/img_home"
+            android:layout_width="489dp"
+            android:layout_height="413dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/img_desc"
+            app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/tomato_bg" />
+
         <TextView
             android:id="@+id/tv_welcome_home"
             android:layout_width="wrap_content"
@@ -82,42 +95,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
-        <ImageView
-            android:id="@+id/img_user"
-            android:layout_width="489dp"
-            android:layout_height="413dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="80dp"
-            android:contentDescription="@string/img_desc"
-            app:layout_constraintBottom_toTopOf="@+id/tabLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/tomato_bg" />
-
-        <!--        <ImageView-->
-<!--            android:id="@+id/img_user"-->
-<!--            android:layout_width="135dp"-->
-<!--            android:layout_height="135dp"-->
-<!--            android:layout_marginTop="40dp"-->
-<!--            android:layout_marginEnd="24dp"-->
-<!--            android:contentDescription="@string/img_user"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            tools:srcCompat="@drawable/farmer_icon" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_name_user"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:fontFamily="@font/montserrat_bold"-->
-<!--            android:text="@string/name"-->
-<!--            android:textColor="@color/pc"-->
-<!--            android:textSize="18sp"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/img_user"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/img_user"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/img_user" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

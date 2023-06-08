@@ -1,42 +1,44 @@
 package com.capstone.tomatifyapp.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.capstone.tomatifyapp.databinding.NewsItemBinding
-import com.capstone.tomatifyapp.model.NewsModel
+import com.capstone.tomatifyapp.R
+import com.capstone.tomatifyapp.model.NewsItem
 
-class NewsAdapter : ListAdapter<NewsModel, NewsAdapter.ViewHolder>(DiffCallback) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = NewsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+    private val newsItems: MutableList<NewsItem> = mutableListOf()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_news, parent, false)
+        return NewsViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
+        val newsItem = newsItems[position]
+        holder.bind(newsItem)
     }
 
-    inner class ViewHolder(private val binding: NewsItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: NewsModel) {
-            binding.tvNewsTitle.text = item.title
-            Glide.with(itemView.context)
-                .load(item.image)
-                .circleCrop()
-                .into(binding.imgNews)
-        }
+    override fun getItemCount(): Int {
+        return newsItems.size
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<NewsModel>() {
-        override fun areItemsTheSame(oldItem: NewsModel, newItem: NewsModel): Boolean {
-            return oldItem.title == newItem.title
-        }
+    fun setNewsItems(items: List<NewsItem>) {
+        newsItems.clear()
+        newsItems.addAll(items)
+        notifyDataSetChanged()
+    }
 
-        override fun areContentsTheSame(oldItem: NewsModel, newItem: NewsModel): Boolean {
-            return oldItem == newItem
+    class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val titleTextView: TextView = itemView.findViewById(R.id.tv_news_title)
+        private val contentTextView: TextView = itemView.findViewById(R.id.tv_news_desc)
+
+        fun bind(newsItem: NewsItem) {
+            titleTextView.text = newsItem.title
+            contentTextView.text = newsItem.excerpt
         }
     }
 }
+

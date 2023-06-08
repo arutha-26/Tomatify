@@ -1,6 +1,5 @@
 package com.capstone.tomatifyapp.api
 
-import com.capstone.tomatifyapp.utils.TIMEOUT_REQUEST
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,43 +9,38 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Named
 
 @Module
-    @InstallIn(SingletonComponent::class)
-    object ApiConfig {
+@InstallIn(SingletonComponent::class)
+object ApiConfig {
 
-        @JvmField
-        val BASE_URL = "https://api-dot-bharata.et.r.appspot.com/"
+    private const val BASE_URL = "https://api-dot-bharata.et.r.appspot.com/"
+    private const val TIMEOUT_REQUEST = 30L
 
-        @JvmField
-        val NEWS_URL = "https://news2-dot-deploynwes.et.r.appspot.com/"
-
-        @Provides
-        fun getApiService(@Named("baseURL") baseURL: String): ApiService {
-            val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-
-            val client = OkHttpClient
-                .Builder()
-                .connectTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
-                .readTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
-                .writeTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
-                .addInterceptor(loggingInterceptor)
-                .build()
-
-            val retrofit = Retrofit.Builder()
-                .baseUrl(baseURL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
-
-            return retrofit.create(ApiService::class.java)
-        }
-
-        @Provides
-        @Named("baseURL")
-        fun provideBaseUrl(): String {
-            return BASE_URL
-        }
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        return OkHttpClient.Builder()
+            .connectTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
+            .readTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
+            .writeTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
+            .build()
     }
+
+    @Provides
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+    }
+
+    @Provides
+    fun provideApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
+    }
+}
+
 

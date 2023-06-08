@@ -1,103 +1,65 @@
 package com.capstone.tomatifyapp.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.capstone.tomatifyapp.R
+import com.capstone.tomatifyapp.adapter.NewsAdapter
+import com.capstone.tomatifyapp.ui.auth.viewmodel.NewsViewModel
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var newsViewModel: NewsViewModel
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        viewPager = findViewById(R.id.viewPager)
+        tabLayout = findViewById(R.id.tabLayout)
+
+        newsViewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
+
+        // Mendapatkan data berita lokal
+        newsViewModel.getLocalNews().observe(this, Observer { newsItems ->
+            // Mengupdate UI dengan data berita lokal
+            // Contoh: Menggunakan adapter untuk ViewPager2
+            val newsAdapter = NewsAdapter()
+            viewPager.adapter = newsAdapter
+
+            // Lampirkan TabLayoutMediator setelah adapter ditetapkan
+            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                // Konfigurasi tab sesuai dengan posisi
+                if (position == 0) {
+                    tab.text = "Local News"
+                } else {
+                    tab.text = "International News"
+                }
+            }.attach()
+        })
+
+        // Mendapatkan data berita internasional
+        newsViewModel.getInternationalNews().observe(this, Observer { newsItems ->
+            // Mengupdate UI dengan data berita internasional
+            // Contoh: Menggunakan adapter untuk ViewPager2
+            val newsAdapter = NewsAdapter()
+            viewPager.adapter = newsAdapter
+
+            // Lampirkan TabLayoutMediator setelah adapter ditetapkan
+            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                // Konfigurasi tab sesuai dengan posisi
+                if (position == 0) {
+                    tab.text = "Local News"
+                } else {
+                    tab.text = "International News"
+                }
+            }.attach()
+        })
     }
 }
-
-//package com.capstone.tomatifyapp.ui.main
-//
-//import android.os.Build
-//import androidx.appcompat.app.AppCompatActivity
-//import android.os.Bundle
-//import android.view.View
-//import android.view.WindowInsets
-//import android.view.WindowManager
-//import androidx.activity.viewModels
-//import androidx.lifecycle.lifecycleScope
-//import androidx.viewpager2.widget.ViewPager2
-//import com.capstone.tomatifyapp.adapter.SectionPagerAdapter
-//import com.capstone.tomatifyapp.api.ApiConfig
-//import com.capstone.tomatifyapp.databinding.ActivityHomeBinding
-//import com.capstone.tomatifyapp.helper.ViewModelFactory
-//import com.capstone.tomatifyapp.viewmodel.NewsViewModel
-//import com.google.android.material.tabs.TabLayout
-//import com.google.android.material.tabs.TabLayoutMediator
-//import kotlinx.coroutines.launch
-//
-//class HomeActivity : AppCompatActivity() {
-//    private lateinit var binding: ActivityHomeBinding
-//    private val newsViewModel by viewModels<NewsViewModel> {
-//        ViewModelFactory.getInstance(application)
-//    }
-//
-//
-//    private fun hideActionBar() {
-//        @Suppress("DEPRECATION")
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//            window.insetsController?.hide(WindowInsets.Type.statusBars())
-//        } else {
-//            window.setFlags(
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN
-//            )
-//        }
-//        supportActionBar?.hide()
-//    }
-//
-//    private fun showLoading(isLoading: Boolean) {
-//        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-//    }
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        binding = ActivityHomeBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        val title = intent.getStringExtra(EXTRA_TITLE)
-//
-//        if (title != null) {
-//            showLoading(true)
-//            lifecycleScope.launch {
-//                newsViewModel.getNational(ApiConfig.NEWS_URL)
-//            }
-//            newsViewModel.international.observe(this) {
-//                with(binding) {
-////                    tvNameUser.text =
-////                        showLoading(false).toString()
-//                }
-//            }
-//
-//        }
-//
-//        hideActionBar()
-//        setUpViewPager(title)
-//    }
-//
-//
-//
-//    private fun setUpViewPager(username: String?) {
-//        val sectionPagerAdapter = SectionPagerAdapter(this)
-//        sectionPagerAdapter.title = username.toString()
-//        val viewPager: ViewPager2 = binding.viewPager
-//        viewPager.adapter = sectionPagerAdapter
-//        val tabs: TabLayout = binding.tabLayout
-//        TabLayoutMediator(tabs, viewPager) { tab, position ->
-//            if (position == 0) {
-//                tab.text = "National"
-//            } else {
-//                tab.text = "International"
-//            }
-//        }.attach()
-//    }
-//
-//    companion object {
-//        const val EXTRA_TITLE = "extra_username"
-//    }
-//}
