@@ -41,4 +41,9 @@
     <string name="national">National</string>
     <string name="international">International</string>
     <string name="img_desc">img_desc</string>
+    <string name="settings">Settings</string>
+    <string name="home">Home</string>
+    <string name="user_name">User Name</string>
+    <string name="user_email">user email</string>
+    <string name="log_out">Log Out</string>
 </resources>
