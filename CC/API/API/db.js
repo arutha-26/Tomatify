@@ -2,9 +2,9 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
   // TODO ubah, sesuaikan dengan database di cloud anda 
-  host: 'localhost',
+  host: '34.121.9.97',
   user: 'root',
-  password: '',
+  password: 'roott',
   database: 'capstone'
 });
 
