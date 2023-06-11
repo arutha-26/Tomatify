@@ -15,41 +15,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:alpha="1"
+            android:id="@+id/img_home"
+            android:layout_width="489dp"
+            android:layout_height="413dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/img_desc"
+            app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/tomato_bg" />
+
         <TextView
             android:id="@+id/tv_welcome_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/welcome_msg"
             android:textColor="@color/pc"
-            android:textSize="28sp"
+            android:textSize="35sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img_user"
-            android:layout_width="135dp"
-            android:layout_height="135dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/farmer_icon" />
 
+        <!--    NEWS SECTION    -->
         <TextView
-            android:id="@+id/name_user"
+            android:id="@+id/tv_news"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/name"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="65dp"
             android:fontFamily="@font/montserrat_bold"
-            android:textSize="18sp"
+            android:text="@string/breaking_news"
             android:textColor="@color/pc"
-            app:layout_constraintEnd_toEndOf="@+id/img_user"
-            app:layout_constraintStart_toStartOf="@+id/img_user"
-            app:layout_constraintTop_toBottomOf="@+id/img_user" />
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_welcome_home" />
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:contentDescription="@string/tab_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_news"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/bg_home"
+            app:tabMode="fixed" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="57dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+        <!--    NEWS SECTION    -->
+
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/tabLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

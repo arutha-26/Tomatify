@@ -1,7 +1,5 @@
 package com.capstone.tomatifyapp.api
 
-import com.capstone.tomatifyapp.api.ApiService
-import com.capstone.tomatifyapp.utils.TIMEOUT_REQUEST
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,29 +14,33 @@ import java.util.concurrent.TimeUnit
 @InstallIn(SingletonComponent::class)
 object ApiConfig {
 
-    private val BASE_URL = "https://story-api.dicoding.dev/v1/"
-
-//    private val BASE_URL = "https://logreg-dot-bharata.et.r.appspot.com"
+    private const val BASE_URL = "https://api-dot-bharata.et.r.appspot.com/"
+    private const val TIMEOUT_REQUEST = 30L
 
     @Provides
-    fun getApiService(): ApiService {
+    fun provideOkHttpClient(): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-
-        val client = OkHttpClient
-            .Builder()
+        return OkHttpClient.Builder()
             .connectTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
             .readTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
             .writeTimeout(TIMEOUT_REQUEST, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
             .build()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .build()
-
-        return retrofit.create(ApiService::class.java)
     }
 
+    @Provides
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+    }
+
+    @Provides
+    fun provideApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
+    }
 }
+
+

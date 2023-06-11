@@ -17,13 +17,13 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.tomatifyapp.R
-import com.capstone.tomatifyapp.utils.PREF_TOKEN
-import com.capstone.tomatifyapp.utils.Result
 import com.capstone.tomatifyapp.databinding.ActivityLoginBinding
+import com.capstone.tomatifyapp.model.LoginResult
 import com.capstone.tomatifyapp.ui.auth.viewmodel.AuthViewModel
 import com.capstone.tomatifyapp.ui.main.HomeActivity
+import com.capstone.tomatifyapp.utils.PREF_TOKEN
 import dagger.hilt.android.AndroidEntryPoint
-
+import com.capstone.tomatifyapp.utils.Result
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -52,11 +52,9 @@ class LoginActivity : AppCompatActivity() {
         binding.btnSignIn.setOnClickListener{
             login()
         }
-
     }
 
     private fun hideActionBar() {
-        @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
@@ -70,66 +68,59 @@ class LoginActivity : AppCompatActivity() {
 
     private fun playAnimation() {
         with(binding) {
+            val imgView = ObjectAnimator.ofFloat(imageView3, View.ALPHA, 1f).setDuration(500)
             val titleLogin = ObjectAnimator.ofFloat(txtwelcome, View.ALPHA, 1f).setDuration(500)
             val titleEmail = ObjectAnimator.ofFloat(titleEmail, View.ALPHA, 1f).setDuration(500)
             val edEmail = ObjectAnimator.ofFloat(edSigninEmail, View.ALPHA, 1f).setDuration(500)
             val titlePass = ObjectAnimator.ofFloat(titlePassword, View.ALPHA, 1f).setDuration(500)
             val edPass = ObjectAnimator.ofFloat(edSigninPassword, View.ALPHA, 1f).setDuration(500)
             val btnSignIn = ObjectAnimator.ofFloat(btnSignIn, View.ALPHA, 1f).setDuration(500)
-//            val titleAtau = ObjectAnimator.ofFloat(tvRegis, View.ALPHA, 1f).setDuration(500)
+            val notMember = ObjectAnimator.ofFloat(notmember, View.ALPHA, 1f).setDuration(500)
             val titleRegister = ObjectAnimator.ofFloat(tvRegis, View.ALPHA, 1f).setDuration(500)
 
-
             AnimatorSet().apply {
-                playSequentially(titleLogin, titleEmail, edEmail, titlePass, edPass, btnSignIn, titleRegister)
+                playSequentially(imgView, titleLogin, titleEmail, edEmail, titlePass, edPass, btnSignIn, notMember, titleRegister)
                 start()
             }
         }
     }
 
-    @Suppress("DEPRECATION")
     private fun login() {
         val email = binding.edSigninEmail.text.toString().trim()
         val password = binding.edSigninPassword.text.toString().trim()
 
         authViewModel.login(email, password).observe(this) { loginResult ->
-
-            when(loginResult) {
+            when (loginResult) {
                 is Result.Loading -> {
                     isLoading(true)
                 }
                 is Result.Success -> {
                     isLoading(false)
-                    val token = loginResult.data?.loginResult?.token
-                    if (token.isNullOrBlank()) {
-                        Toast.makeText(this@LoginActivity, resources.getString(R.string.signin_failed), Toast.LENGTH_SHORT).show()
-                        return@observe
-                    }
-                    PreferenceManager.getDefaultSharedPreferences(this@LoginActivity)
-                        .edit()
-                        .putString(PREF_TOKEN, token)
-                        .apply()
                     val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
                 }
-                else -> {
+                is Result.Error -> {
                     isLoading(false)
 
-                    if (loginResult.message.equals("User not found")) {
-                        binding.edSigninEmail.error = loginResult.message
-
-                    } else if (loginResult.message.equals("Invalid password")) {
-                        binding.edSigninPassword.error = loginResult.message
+                    val errorMessage = loginResult.message ?: resources.getString(R.string.signin_failed)
+                    if (errorMessage.equals("User not found")) {
+                        binding.edSigninEmail.error = errorMessage
+                    } else if (errorMessage.equals("Invalid password")) {
+                        binding.edSigninPassword.error = errorMessage
                     }
-                    Toast.makeText(this@LoginActivity, loginResult.message ?: resources.getString(R.string.signin_failed), Toast.LENGTH_SHORT).show()
-
+                    Toast.makeText(
+                        this@LoginActivity,
+                        errorMessage,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
-
         }
     }
+
 
     private fun watcher() : TextWatcher {
         return object : TextWatcher {
@@ -144,16 +135,11 @@ class LoginActivity : AppCompatActivity() {
                             binding.edSigninPassword.text.toString().trim().isNotEmpty() &&
                             binding.edSigninPassword.error == null
             }
-
         }
     }
 
     private fun isLoading(isL: Boolean) {
         binding.btnSignIn.isEnabled = !isL
-        if (isL) {
-            binding.rlLoading.visibility = View.VISIBLE
-        } else {
-            binding.rlLoading.visibility = View.GONE
-        }
+        binding.rlLoading.visibility = if (isL) View.VISIBLE else View.GONE
     }
 }

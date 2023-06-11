@@ -35,7 +35,6 @@ class RegisterActivity : AppCompatActivity() {
         binding.edRegisterName.addTextChangedListener(watcher())
         binding.edRegisterEmail.addTextChangedListener(watcher())
         binding.edRegisterPassword.addTextChangedListener(watcher())
-        binding.edRegisterPasswordConfirm.addTextChangedListener(watcher())
 
         binding.btnRegister.setOnClickListener {
             register()
@@ -50,13 +49,6 @@ class RegisterActivity : AppCompatActivity() {
         val name = binding.edRegisterName.text.toString().trim()
         val email = binding.edRegisterEmail.text.toString().trim()
         val password = binding.edRegisterPassword.text.toString().trim()
-        val confirmPassword = binding.edRegisterPasswordConfirm.text.toString()
-
-        if (password != confirmPassword) {
-            binding.edRegisterPasswordConfirm.error = getString(R.string.password_are_not_the_same)
-            Toast.makeText(this, getString(R.string.password_are_not_the_same), Toast.LENGTH_SHORT).show()
-            return
-        }
 
         authViewModel.register(name, email, password).observe(this) { registerResult ->
 
@@ -104,7 +96,6 @@ class RegisterActivity : AppCompatActivity() {
                             binding.edRegisterEmail.error == null &&
                             binding.edRegisterPassword.text.toString().trim().isNotEmpty() &&
                             binding.edRegisterPassword.error == null &&
-                            binding.edRegisterPasswordConfirm.text.toString().trim().isNotEmpty() &&
                             binding.edRegisterName.text.toString().trim().isNotEmpty()
             }
 
