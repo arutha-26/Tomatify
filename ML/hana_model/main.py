@@ -3,38 +3,58 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 
-BUCKET_NAME = ...
-class_name = ["Bacterial Spot", "Early Blight", "Late Blight", "Leaf Mold", "Mosaic Virus", "Septoria Leaf Spot", "Spider Mites", "Target Spot", "Yellow Leaf Curl"]
-
 model = None
+class_names = ['bacterial_spot', 'early_blight', 'healthy', 'late_blight', 'leaf_mold', 'mosaic_virus', 'septoria_leaf_spot', 'spider_mites', 'target_spot', 'yellow_leaf_curl']
+class_description = ['Penyakit ini disebabkan oleh empat spesies Xanthomonas. Gejala bacterial spot dimulai sebagai lesi kecil berwarna kuning kehijauan pada daun muda atau lesi gelap, basah kuyup, tampak berminyak pada daun yang lebih tua yang berubah menjadi cokelat hingga merah kecoklatan.',
+                     'Early Blight adalah penyakit yang dapat menyebar yang mempengaruhi tomat, disebabkan oleh patogen jamur Alternaria linariae (syn. A. tomatophila), gejalanya meliputi lesi pada batang tomat, buah, dan dedaunan, yang menyebabkan jumlah panen tomat menurun',
+                     'Tanaman tomat yang sehat ditandai dengan daun yang lembut dengan warna hijau sedang hingga gelap dengan batang yang kokoh',
+                     'Penyakit late blight atau penyakit busuk daun adalah salah satu penyakit yang paling merusak tanaman tomat yang disebabkan oleh  Phytophthora infestans (Mont.)',
+                     'Penyakit leaf mold atau penyakit jamur daun tomat adalah penyakit yang umum terjadi pada tanaman tomat. Penyakit ini biasanya terjadi pada lingkungan bersuhu tinggi dan lembab (kondisi yang kondusif untuk penyebaran penyakit dan pertumbuhan pathogen yang cepat). Penyakit jamur daun tomat ini disebabkan oleh pathogen Cladosporium fulvum (C. fulvum)',
+                     'Mosaic virus adalah virus tanaman yang gampang menular. Virus ini menyerang tanaman toman yang berada di dalam ruangan(rumah kaca) dan luar ruangan. Mosaic virus menyebabkan belang hijau muda dan tua, tanaman kerdil dan kadang-kadang distorsi daun',
+                     'Septoria Leaf Spot disebabkan oleh jamur Septoria lycopersici. Penyakit ini ditandai dengan munculnya bintik-bintik kecil yang basah yang akan menjadi bintik-bintik melingkar dengan diameter sekitar 1/8 inci',
+                     'Spider Mites adalah penyakit yang disebabkan oleh hama arakhnida invasif, yang ditandai dengan daun menjadi putih kekuningan dan berbintik-bintik. Spider mites dapat ditemukan di kedua sisi daun tetapi lebih sering ada di bagian bawah dekat urat daun',
+                     'Gejala yang ditimbulkan oleh penyakit ini dimulai dengan munculnya lesi gelap kecil yang membesar membentuk lesi coklat muda dengan pola konsentris',
+                     'Gejala khas yang tanaman yang terinfeksi penyakit dengan infeksi Yellow leaf curl adalah tanaman menjadi kerdil, klorosis daun melengkung ke atas, pengurangan ukuran daun dan penurunan produksi tomat. Penyakit ini ditularkan antar tanaman oleh serangga, Besimia tabaci (umumnya dikenal sebagai kutu kebul)']
 
-def download_blob(bucket_name, source_blod_name, destination_file_name):
+BUCKET_NAME = "model-tomat" # Ganti dengan nama bucket GCP Anda
+
+def download_blob(bucket_name, source_blob_name, destination_file_name):
+    """Downloads a blob from the bucket."""
     storage_client = storage.Client()
     bucket = storage_client.get_bucket(bucket_name)
-    blob = bucket.blob(source_blod_name)
+    blob = bucket.blob(source_blob_name)
+
     blob.download_to_filename(destination_file_name)
 
-def predict(request):
+    print(f"Blob {source_blob_name} downloaded to {destination_file_name}.")
+
+def load_model():
     global model
-    if model is not None:
+    if model is None:
         download_blob(
             BUCKET_NAME,
-            "directory model", #isi directory model yang sudah diconvert h5, dan file h5 sudah ada di bucket
-            "directory model2", #isi directory untuk dowload local?
+            "models/model.h5",
+            "/tmp/model.h5",
         )
-        model = tf.keras.models.load_model("directory model2")
+        model = tf.keras.models.load_model("/tmp/model.h5")
 
-    image = request.files["file"] #variabel yang menampung gambar yang diupload oleh user utk diprediksi
+def predict(request):
+    load_model()
 
-    #convert image diupload oleh user utk diprediksi ke RGB dan ukur 256 x 256, sesuai dengan ukuran yang ditraining model
-    image = np.array(Image.open(image).convert("RGB").resize((256,256)))
-    #normalisasi image jadi range 0 sampai 1
-    image = image/255
+    image = request.files["file"]
+
+    image = np.array(
+        Image.open(image).convert("RGB").resize((256, 256)) # image resizing
+    )
+
+    image = image / 255.0 # normalize the image in the range of 0 to 1
+
     img_array = tf.expand_dims(image, 0)
-
     predictions = model.predict(img_array)
 
-    #untuk menunjukan hasil prediksi
-    predicted_class = class_name[np.argmax(predictions[0])]
+    print("Predictions:", predictions)
 
-    return{"class" :predicted_class}
+    predicted_class = class_names[np.argmax(predictions[0])]
+    confidence = round(100 * np.max(predictions[0]), 2)
+
+    return {"class": predicted_class, "confidence": confidence}
