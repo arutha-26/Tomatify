@@ -1,8 +1,8 @@
 package com.capstone.tomatifyapp.api
 
-//import com.capstone.tomatifyapp.model.ResponseDetailStory
-//import com.capstone.tomatifyapp.model.ResponseListStory
+
 import com.capstone.tomatifyapp.model.*
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -16,8 +16,12 @@ interface ApiService {
     fun register(@Body user: UserModel): Call<ResponseGeneral>
 
     @GET("newsInter")
-    fun getInternationalNews() : Call<NewsResponse>
+    fun getInternationalNews(): Call<NewsResponse>
 
     @GET("newsLokal")
     fun getLocalNews(): Call<NewsResponse>
+
+    @Multipart
+    @POST("predict")
+    fun predict(@Part file: MultipartBody.Part): Call<ResponseGeneral>
 }
