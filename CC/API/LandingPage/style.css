@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@300&display=swap');
 
 :root{
     --main-color: #d43333;
@@ -173,10 +173,11 @@ button:hover {
 }
 
 .home .content h3{
-    padding-top: 4rem;
+    padding-top: 5rem;
     font-size: 5rem;
     text-transform: none;
     color: black;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .home .content p{
@@ -199,20 +200,23 @@ button:hover {
     color: #fff;
     font-size: xx-large;
     font-weight: bold;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
 .home button:hover {
     background-color: #000000;
 }
 
-
+/* ------------------------about -----------------------*/
 
 .about .row{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 4.5rem;
-    margin-bottom: 7rem;
+    margin-bottom: 2rem;
 }
 
 .about .row .image{
@@ -221,12 +225,13 @@ button:hover {
 
 .about .row .image img{
     width: auto;
-    height: 470px;
+    height: 550px;
 }
 
 .about .row .content{
     flex: 1 1 45rem;
     padding: 1rem;
+    padding-right: 12rem;
 }
 
 .about .row h3{
@@ -246,8 +251,11 @@ button:hover {
 .menu{
     position: relative;
     background-color: #d43333;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
 }
 
 /* .menu .row{
@@ -399,6 +407,32 @@ button:hover {
     padding-bottom: 3rem;
 }
 
+.tomatoes-1{
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 205rem;
+    left: 7rem;
+}
+
+.tomatoes{
+    width: 350px;
+    height: auto;
+    position: absolute;
+    top: 240rem;
+    right: .5rem;
+    animation: bounce 5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translate(0px, -40px);
+    }
+    50% {
+        transform: translate(0px, 40px);
+    }
+}
+
 .doc-card{
     width: 270px;
     text-align: center;
@@ -408,6 +442,11 @@ img.doc-img{
     height: 400px;
     width: auto;
     display: inline-block;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
 }
 
 .doc-title{
@@ -444,6 +483,9 @@ img.doc-img{
 .swiper-button-next{
     right: calc(50% - 2rem);
 }
+
+
+/*-------------- Team -------------------*/
 
 .team{
     background-color: #d43333;
@@ -486,9 +528,17 @@ img.doc-img{
     padding: 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
     transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
 }
 .row .member-ml .card:hover{
     transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -o-transform: translateY(-15px);
 }
 .member-ml .card .content{
     width: 100%;
@@ -513,6 +563,10 @@ img.doc-img{
     border: 3px solid #ffff;
     border-radius: 50%;
     object-fit: cover;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 .card .content .name{
     font-size: 15px;
@@ -592,7 +646,7 @@ input[type="radio"]{
 
 .row .member-cc .card{
     width: calc(100% / 3 - 10px);
-    background: #fff;
+    background: #f0f0f0;
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
@@ -632,6 +686,11 @@ input[type="radio"]{
     margin-left: 5rem;
 }
 
+.support-section-1 img{
+    width: 20px;
+
+}
+
 .support-section-1 div{
     font-weight: bold;
     font-size: xx-large;
@@ -639,6 +698,11 @@ input[type="radio"]{
 
 .support-section-1 p{
     font-size: small;
+    text-transform: none;
+}
+
+.support-section-1 h3{
+    text-transform: none;
 }
 
 .support-section-2 {

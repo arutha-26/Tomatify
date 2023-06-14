@@ -28,7 +28,6 @@ let swiperProducts = new Swiper(".doc-container", {
     }
 })
 
-
 $(document).ready(function(){
     $(window).on('scroll', function(){
         if ($(window).scrollTop()){
