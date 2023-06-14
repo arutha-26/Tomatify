@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>Adel's Website</title>
+=======
     <title>Tomatify</title>
+>>>>>>> 03784a22f01af371a5d386604ebcaefdcd5b91d0
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="swiper-bundle.min.css">
-    <link rel="stylesheet" href="path/to/remixicon.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
     <header class="header">
@@ -17,11 +21,11 @@
         </a>
         <nav>
             <ul class="nav__links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#menu">Features</a></li>
-                <li><a href="#doc">Doc</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#home">Halaman Utama</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#menu">Fitur</a></li>
+                <li><a href="#doc">Dok</a></li>
+                <li><a href="#team">Tim</a></li>
                 <li><a href="#footer">Support</a></li>
             </ul>
         </nav>
@@ -32,25 +36,25 @@
 
     <main>
         <article>
-            <section class="home" id="home">
+            <section class="home" id="home" data-aos="zoom-in>
                 <div class="row">
                     <div class="content">
                         <h3>Scan tomatmu sekarang juga!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, nostrum ullam? Ratione corporis earum tenetur possimus, perspiciatis fuga porro exercitationem non distinctio nostrum architecto reprehenderit hic ab maxime excepturi dolores?</p>
-                        <button class="button">Download</button>
+                        <p>Dapatkan solusi cepat dan akurat untuk mengidentifikasi penyakit tanaman tomat Anda dengan aplikasi Tomatify. Jadikanlah perawatan tanaman tomat Anda lebih efisien dan efektif dengan bantuan teknologi canggih ini. Unduh sekarang dan nikmati hasil panen tomat yang sehat dan berkualitas!</p>
+                        <button class="button">Unduh Gratis</button>
                     </div>
                 </div>
             </section>
 
-            <section class="about" id="about">
+            <section class="about" id="about" data-aos="fade-left">
                 <div class="row">
-                    <div class="image">
+                    <div class="image" data-aos="fade-right" data-aos-offset="30" data-aos-easing="ease-in-sine">
                         <img src="images/3D iPhone Mockup.png" width="2px" height="400px" alt="">
                     </div>
         
                     <div class="content">
-                        <h3>Let's Survive</h3>
-                        <p>Not only charming and popular because of their skills, Kpop docs are now the favorite of all circles globally because of their adorable and cool behavior. From this application we can enjoy it by watching various kinds of Kpop Idol videos</p>
+                        <h3>Tomatify</h3>
+                        <p>Aplikasi Tomatify adalah sebuah aplikasi mobile yang dapat digunakan untuk melakukan scan daun tanaman tomat yang akan memberikan informasi berupa nama penyakit dan deskripsi penyakit. Selain itu juga terdapat fitur berita pertanian lokal sampai kancah international</p>
                     </div>
                 </div>
             </section>
@@ -58,7 +62,7 @@
 
         <article>
                 <section class="menu" id="menu">
-                    <img src="images/forest-3622519.jpg" alt="menu image" class="menu_bg-img">
+                    <!-- <img src="images/pexels-toni-cuenca-594059-removebg-preview.png" alt="menu image" class="menu_bg-img"> -->
                     <div class="row">
                         <div class="row section">
                             <h2 class="title">
@@ -68,46 +72,46 @@
                             <div class="menu_container container grid">
         
                                 <div class="menu_content">
-                                    <!-- <img src="images/3d + wall.png" alt="menu image" class="menu_border"> -->
-                                    <div class="menu_card">
+                                    <img src="images/steps-curve-line.svg" alt="menu image" class="menu_border">
+                                    <div class="menu_card" data-aos="zoom-in-up">
                                         <div class="menu_circle">
                                             <div class="menu_subcircle">
                                                 1
                                             </div>
         
-                                            <img src="images/4190212.jpg" alt="menu image" class="menu_img">
+                                            <img src="images/selfie.png" alt="menu image" class="menu_img">
                                         </div>
 
                                         <p class="menu_description">
-                                            Lorem ipsum dolor?
+                                            Fitur scan melalui mobile phone dengan sangat mudah dan cepat
                                         </p>
                                     </div>
 
-                                    <div class="menu_card menu_card-move">
+                                    <div class="menu_card menu_card-move" data-aos="zoom-in-up">
                                         <div class="menu_circle">
                                             <div class="menu_subcircle">
-                                                1
+                                                2
                                             </div>
         
-                                            <img src="images/4190212.jpg" alt="menu image" class="menu_img">
+                                            <img src="images/plant.png" alt="menu image" class="menu_img">
                                         </div>
 
                                         <p class="menu_description">
-                                            Lorem ipsum dolor?
+                                            Fitur untuk mendeteksi nama penyakit pada daun tomat beserta deskripsinya
                                         </p>
                                     </div>
 
-                                    <div class="menu_card">
+                                    <div class="menu_card" data-aos="zoom-in-up">
                                         <div class="menu_circle">
                                             <div class="menu_subcircle">
-                                                1
+                                                3
                                             </div>
         
-                                            <img src="images/4190212.jpg" alt="menu image" class="menu_img">
+                                            <img src="images/checklist.png" alt="menu image" class="menu_img">
                                         </div>
 
                                         <p class="menu_description">
-                                            Lorem ipsum dolor?
+                                            Fitur berita dari seputar pertanian dari petani Indonesia sampai Internasional
                                         </p>
                                     </div>
         
@@ -119,18 +123,18 @@
 
                 <section class="doc" id="doc">
                     <h2 class="section__title">
-                        Documentation
+                        Dokumentasi
                     </h2>
                     <div class="doc-container container swiper">
                         <div class="swiper-wrapper">
                             <article class="doc-card swiper-slide">
-                                <img src="images/4179706.jpg" alt="doc img" class="doc-img">
+                                <img src="images/4179706.jpg" alt="doc img" class="doc-img" data-aos="zoom-out">
 
                                 <h2 class="doc-title">
-                                    Documentation
+                                    Sosialisasi aplikasi
                                 </h2>
                                 <div class="doc-description">
-                                    Lorem 
+                                    Senin, 21 Mei 2023
                                 </div>
                             </article>
                             <article class="doc-card swiper-slide">
@@ -202,7 +206,7 @@
                     <h2>Member</h2>
                     <div class="row">
                         <div class="member-ml">
-                            <div class="card">
+                            <div class="card" data-aos="zoom-in-right">
                                 <div class="content">
                                     <div class="img">
                                         <img src="images/4179706.jpg" alt="">
@@ -217,7 +221,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div class="card" data-aos="zoom-in">
                                 <div class="content">
                                     <div class="img">
                                         <img src="images/4179706.jpg" alt="">
@@ -233,7 +237,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" data-aos="zoom-in-left">
                                 <div class="content">
                                     <div class="img">
                                         <img src="images/4179706.jpg" alt="">
@@ -251,7 +255,7 @@
                         </div>
 
                         <div class="member-cc">
-                            <div class="card">
+                            <div class="card" data-aos="zoom-in-right">
                                 <div class="content">
                                     <div class="img">
                                         <img src="images/4179706.jpg" alt="">
@@ -266,7 +270,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div class="card" data-aos="zoom-in">
                                 <div class="content">
                                     <div class="img">
                                         <img src="images/4179706.jpg" alt="">
@@ -281,7 +285,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div class="card" data-aos="zoom-in-left">
                                 <div class="content">
                                     <div class="img">
                                         <img src="images/4179706.jpg" alt="">
@@ -305,16 +309,19 @@
 
     <footer class="footer" id="footer">
         <section class="support">
-            <div class="support-section-1">
+            <div class="support-section-1" data-aos="fade-up"
+            data-aos-duration="1000">
                 <div class="tomatify">Tomatify</div><br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum vero ullam fuga, ab facere in repellendus esse aliquam sapiente nesciunt repudiandae, exercitationem quis voluptatibus eum doloribus quam, magni veritatis iure?</p><br><br>
+                <p>Aplikasi Tomatify adalah sebuah aplikasi mobile yang dapat digunakan untuk melakukan scan daun tanaman tomat yang akan memberikan informasi berupa nama penyakit dan deskripsi penyakit. Selain itu juga terdapat fitur berita pertanian lokal sampai kancah international</p><br><br>
                 <h3>Terms & Conditions</h3>
                 <h3>Privacy Policy</h3>
             </div>
-            <div class="support-section-2">
-                <a href="/download"><img src="images/play-store.png"></a>
+            <div class="support-section-2" data-aos="fade-up"
+            data-aos-duration="1000">
+                <a href=""><button>Dapatkan disini</button></a>
             </div>
-            <div class="support-section-3">
+            <div class="support-section-3" data-aos="fade-up"
+            data-aos-duration="1000">
                 <p>Support by</p>
                 <div class="share">
                     <img src="images/logo-footer-.png">
@@ -326,6 +333,14 @@
     </footer>  
 
     <script src="swiper-bundle.min.js"></script>
+<<<<<<< HEAD
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+=======
+>>>>>>> 03784a22f01af371a5d386604ebcaefdcd5b91d0
     <script src="script.js"></script>
 </body>
 </html>
