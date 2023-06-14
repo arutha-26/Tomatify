@@ -36,4 +36,8 @@ $(document).ready(function(){
             $("header").removeClass('bcd');
         }
     })
+<<<<<<< HEAD
 })
+=======
+})
+>>>>>>> a209eeefe0d66f8e246e876613cec4f10284c9bd
