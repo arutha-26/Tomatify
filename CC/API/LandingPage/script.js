@@ -26,7 +26,8 @@ let swiperProducts = new Swiper(".doc-container", {
             spaceBetween: 72,
         }
     }
-});
+})
+
 
 $(document).ready(function(){
     $(window).on('scroll', function(){
