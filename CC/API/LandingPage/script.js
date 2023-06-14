@@ -18,7 +18,7 @@ let swiperProducts = new Swiper(".doc-container", {
 
     navigation: {
         nextEl: ".swiper-button-next",
-        prevEL: ".swiper-button-prev",
+        prevEl: ".swiper-button-prev",
     },
 
     breakpoints: {
@@ -26,8 +26,7 @@ let swiperProducts = new Swiper(".doc-container", {
             spaceBetween: 72,
         }
     }
-})
-
+});
 
 $(document).ready(function(){
     $(window).on('scroll', function(){
@@ -38,4 +37,3 @@ $(document).ready(function(){
         }
     })
 })
-
