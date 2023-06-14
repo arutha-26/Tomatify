@@ -18,7 +18,7 @@ let swiperProducts = new Swiper(".doc-container", {
 
     navigation: {
         nextEl: ".swiper-button-next",
-        prevEL: ".swiper-button-prev",
+        prevEl: ".swiper-button-prev",
     },
 
     breakpoints: {
