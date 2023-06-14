@@ -22,18 +22,9 @@ class ResultPredictActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Prediction Result"
 
-        val name = intent.getStringExtra("name")
-        val description = intent.getStringExtra("description")
-        val prevention = intent.getStringExtra("prevention")
-
-        if (name != null && description != null && prevention != null) {
-            val responsePredict = ResponsePredict(
-                error = false,
-                message = "",
-                listPredict = listOf(
-                    Predict(name = name, description = description, prevention = prevention)
-                )
-            )
+        val responseJson = intent.getStringExtra("responseJson")
+        if (responseJson != null) {
+            val responsePredict = Gson().fromJson(responseJson, ResponsePredict::class.java)
             displayPredictionResult(responsePredict)
         } else {
             Toast.makeText(applicationContext, "Invalid prediction data", Toast.LENGTH_SHORT).show()
@@ -47,6 +38,7 @@ class ResultPredictActivity : AppCompatActivity() {
             Toast.makeText(this, responsePredict.message, Toast.LENGTH_SHORT).show()
         } else {
             val listPredict = responsePredict.listPredict
+            Log.d("ListPredict", listPredict.toString())
             if (listPredict.isNullOrEmpty()) {
                 Toast.makeText(this, "No prediction result", Toast.LENGTH_SHORT).show()
             } else {

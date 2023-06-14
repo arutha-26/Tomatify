@@ -11,10 +11,12 @@ import com.capstone.tomatifyapp.model.NewsItem
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     private val newsItems: MutableList<NewsItem> = mutableListOf()
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_news, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.news_item, parent, false)
         return NewsViewHolder(view)
     }
+
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val newsItem = newsItems[position]
@@ -41,4 +43,3 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
         }
     }
 }
-

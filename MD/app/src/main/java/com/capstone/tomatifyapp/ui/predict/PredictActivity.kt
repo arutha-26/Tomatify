@@ -8,21 +8,22 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.capstone.tomatifyapp.R
 import com.capstone.tomatifyapp.databinding.ActivityPredictBinding
 import com.capstone.tomatifyapp.databinding.BottomDialogChooseUploadImageBinding
-import com.capstone.tomatifyapp.model.Predict
-import com.capstone.tomatifyapp.model.ResponsePredict
 import com.capstone.tomatifyapp.ui.camerax.CameraXActivity
 import com.capstone.tomatifyapp.utils.CAMERA_X_FILE
 import com.capstone.tomatifyapp.utils.reduceFileImage
 import com.capstone.tomatifyapp.utils.uriToFile
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
 import java.io.File
 
 @Suppress("DEPRECATION")
@@ -74,7 +75,7 @@ class PredictActivity : AppCompatActivity() {
         setContentView(view)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Predict Your Tomato Plant"
+        supportActionBar?.title = "Predict Your Plant"
 
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
@@ -115,21 +116,27 @@ class PredictActivity : AppCompatActivity() {
             return
         }
 
-        val name = "late_blight"
-        val description =
-            "Penyakit Late Blight adalah salah satu penyakit yang umum terjadi pada tanaman tomat. Tanaman yang terinfeksi penyakit ini akan mengalami kerusakan pada daun, batang, dan buah. Penyakit Late Blight disebabkan oleh jamur Phytophthora infestans. Gejala awal penyakit ini dapat dikenali dengan munculnya bercak cokelat pada daun, batang, dan buah tanaman. Bercak ini akan membesar dan berubah warna menjadi hitam pada daun, sedangkan pada buah akan muncul bercak berwarna cokelat kehitaman yang dapat merusak buah."
-        val prevention =
-            "Untuk mencegah penyakit Late Blight, Anda dapat melakukan langkah-langkah berikut:\n1. Gunakan benih yang sehat dan bebas dari penyakit.\n2. Pastikan tanah dan kondisi tumbuh lainnya optimal untuk pertumbuhan tanaman.\n3. Jaga kebersihan kebun dan pastikan tidak ada tumpukan dedaunan atau serpihan tanaman yang dapat menjadi tempat berkembang biak bagi jamur.\n4. Jaga kelembaban tanah dengan sistem irigasi yang tepat dan hindari kelembaban yang berlebihan.\n5. Gunakan fungisida organik yang tepat untuk mengendalikan penyakit ini.\n6. Jika terjadi infeksi, lakukan pemangkasan dan pembuangan bagian tanaman yang terinfeksi."
+        isLoading(true)
+        val predictViewModel = ViewModelProvider(this).get(PredictViewModel::class.java)
+        predictViewModel.uploadPhoto(imgFile as File).observe(this) { responseGeneral ->
+            isLoading(false)
 
-        val responsePredict = ResponsePredict(
-            error = false,
-            message = "",
-            listPredict = listOf(
-                Predict(name = name, description = description, prevention = prevention)
-            )
-        )
-
-        displayPredictionResult(responsePredict)
+            if (responseGeneral != null) {
+                if (!responseGeneral.error) {
+                    // Handle success response
+                    val responseJson = Gson().toJson(responseGeneral)
+                    val intent = Intent(this, ResultPredictActivity::class.java)
+                    intent.putExtra("responseJson", responseJson)
+                    startActivity(intent)
+                } else {
+                    // Handle error response
+                    Toast.makeText(this, responseGeneral.message, Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                // Handle null response
+                Toast.makeText(this, "Failed to upload photo", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun startCameraX() {
@@ -181,23 +188,26 @@ class PredictActivity : AppCompatActivity() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun displayPredictionResult(responsePredict: ResponsePredict) {
-        if (responsePredict.error) {
-            // Error occurred, show error message
-            Toast.makeText(this, responsePredict.message, Toast.LENGTH_SHORT).show()
-        } else {
-            val listPredict = responsePredict.listPredict
-            if (listPredict.isNullOrEmpty()) {
-                Toast.makeText(this, "No prediction result", Toast.LENGTH_SHORT).show()
-            } else {
-                // Display prediction result
-                val predict = listPredict[0]
-                val intent = Intent(this, ResultPredictActivity::class.java)
-                intent.putExtra("name", predict.name)
-                intent.putExtra("description", predict.description)
-                intent.putExtra("prevention", predict.prevention)
-                startActivity(intent)
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSION) {
+            if (!allPermissionsGranted()) {
+                Toast.makeText(
+                    this, "Did not Grant A Permission!", Toast.LENGTH_SHORT
+                ).show()
             }
+        }
+    }
+
+    private fun isLoading(isL: Boolean) {
+        if (isL) {
+            binding.rlLoading.visibility = View.VISIBLE
+        } else {
+            binding.rlLoading.visibility = View.GONE
         }
     }
 }
