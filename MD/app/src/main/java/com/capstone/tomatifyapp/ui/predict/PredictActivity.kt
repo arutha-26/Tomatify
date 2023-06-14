@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -118,24 +119,13 @@ class PredictActivity : AppCompatActivity() {
 
         isLoading(true)
         val predictViewModel = ViewModelProvider(this).get(PredictViewModel::class.java)
-        predictViewModel.uploadPhoto(imgFile as File).observe(this) { responseGeneral ->
-            isLoading(false)
-
-            if (responseGeneral != null) {
-                if (!responseGeneral.error) {
-                    // Handle success response
-                    val responseJson = Gson().toJson(responseGeneral)
-                    val intent = Intent(this, ResultPredictActivity::class.java)
-                    intent.putExtra("responseJson", responseJson)
-                    startActivity(intent)
-                } else {
-                    // Handle error response
-                    Toast.makeText(this, responseGeneral.message, Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                // Handle null response
-                Toast.makeText(this, "Failed to upload photo", Toast.LENGTH_SHORT).show()
-            }
+        predictViewModel.uploadImg(imgFile as File)
+        predictViewModel.responseLiveData.observe(this){result ->
+            val predict = result
+            Log.e("predict result", "${predict}")
+            val intent = Intent(this@PredictActivity, ResultPredictActivity::class.java)
+            intent.putExtra(ResultPredictActivity.EXTRA_RESULT, result)
+            startActivity(intent)
         }
     }
 

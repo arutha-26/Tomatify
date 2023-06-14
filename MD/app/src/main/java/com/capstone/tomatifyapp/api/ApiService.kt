@@ -23,5 +23,5 @@ interface ApiService {
 
     @Multipart
     @POST("predict")
-    fun predict(@Part file: MultipartBody.Part): Call<ResponseGeneral>
+    fun predict(@Part file: MultipartBody.Part): Call<Predict>
 }

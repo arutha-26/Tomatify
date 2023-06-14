@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.capstone.tomatifyapp.R
 import com.capstone.tomatifyapp.model.NewsItem
 
-class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
-    private val newsItems: MutableList<NewsItem> = mutableListOf()
+class NewsAdapter(private val listNews: List<NewsItem>) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+//    private val newsItems: MutableList<NewsItem> = mutableListOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -19,27 +19,29 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val newsItem = newsItems[position]
+        val newsItem = listNews[position]
         holder.bind(newsItem)
     }
 
     override fun getItemCount(): Int {
-        return newsItems.size
+        return listNews.size
     }
 
-    fun setNewsItems(items: List<NewsItem>) {
-        newsItems.clear()
-        newsItems.addAll(items)
-        notifyDataSetChanged()
-    }
+//    fun setNewsItems(items: List<NewsItem>) {
+//        newsItems.clear()
+//        newsItems.addAll(items)
+//        notifyDataSetChanged()
+//    }
 
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.tv_news_title)
         private val contentTextView: TextView = itemView.findViewById(R.id.tv_news_desc)
+        private val dateTextView: TextView = itemView.findViewById(R.id.tv_news_source_or_date)
 
         fun bind(newsItem: NewsItem) {
             titleTextView.text = newsItem.title
             contentTextView.text = newsItem.excerpt
+            dateTextView.text = newsItem.date
         }
     }
 }

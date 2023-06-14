@@ -1,7 +1,10 @@
 package com.capstone.tomatifyapp.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Predict(
     @SerializedName("file")
     val photoUrl: String? = null,
@@ -17,4 +20,4 @@ data class Predict(
 
     @SerializedName("prevention")
     val prevention: String? = null
-)
+):Parcelable

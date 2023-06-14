@@ -1,14 +1,12 @@
 package com.capstone.tomatifyapp.ui.predict
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
 import com.capstone.tomatifyapp.databinding.ActivityResultPredictBinding
 import com.capstone.tomatifyapp.model.Predict
-import com.capstone.tomatifyapp.model.ResponsePredict
-import com.google.gson.Gson
 
 class ResultPredictActivity : AppCompatActivity() {
 
@@ -22,36 +20,25 @@ class ResultPredictActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Prediction Result"
 
-        val responseJson = intent.getStringExtra("responseJson")
-        if (responseJson != null) {
-            val responsePredict = Gson().fromJson(responseJson, ResponsePredict::class.java)
-            displayPredictionResult(responsePredict)
+
+        val responseJson = if (Build.VERSION.SDK_INT >= 33) {
+            intent.getParcelableExtra(EXTRA_RESULT, Predict::class.java)
         } else {
-            Toast.makeText(applicationContext, "Invalid prediction data", Toast.LENGTH_SHORT).show()
-            finish()
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(EXTRA_RESULT)
         }
+
+        Log.e("responseJson", "${responseJson}")
+        if(responseJson != null){
+            displayPredictionResult(responseJson)
+        }
+
     }
 
-    private fun displayPredictionResult(responsePredict: ResponsePredict) {
-        if (responsePredict.error) {
-            // Error occurred, show error message
-            Toast.makeText(this, responsePredict.message, Toast.LENGTH_SHORT).show()
-        } else {
-            val listPredict = responsePredict.listPredict
-            Log.d("ListPredict", listPredict.toString())
-            if (listPredict.isNullOrEmpty()) {
-                Toast.makeText(this, "No prediction result", Toast.LENGTH_SHORT).show()
-            } else {
-                Log.d("ListPredict", listPredict.toString())
-                // Display prediction result
-                val predict = listPredict[0]
-                with(binding) {
-                    tvPredictResult.text = predict.name
-                    tvPredictDescription.text = predict.description
-                    tvPrevention.text = predict.prevention
-                }
-            }
-        }
+    private fun displayPredictionResult(responsePredict: Predict) {
+        binding.tvPredictResult.text = responsePredict.name
+        binding.tvPredictDescription.text = responsePredict.description
+        binding.tvPrevention.text = responsePredict.prevention
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -60,5 +47,9 @@ class ResultPredictActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object{
+        const val EXTRA_RESULT = "extra_result"
     }
 }
