@@ -14,7 +14,7 @@ import com.capstone.tomatifyapp.adapter.NewsAdapter
 import com.capstone.tomatifyapp.model.NewsItem
 import com.capstone.tomatifyapp.ui.auth.viewmodel.NewsViewModel
 
-class NewsFragment : Fragment() {
+class InternationalNewsFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var newsAdapter: NewsAdapter
 
@@ -42,10 +42,8 @@ class NewsFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-//        newsAdapter = NewsAdapter()
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
-//        recyclerView.adapter = newsAdapter
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -53,11 +51,6 @@ class NewsFragment : Fragment() {
         val adapter = NewsAdapter(listNews)
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
-
-
-//        newsViewModel.getInternationalNews().observe(viewLifecycleOwner) { newsList ->
-//            newsAdapter.setNewsItems(newsList)
-//        }
     }
 }
 

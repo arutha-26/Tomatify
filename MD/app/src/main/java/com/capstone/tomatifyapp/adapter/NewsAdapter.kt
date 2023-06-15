@@ -27,12 +27,6 @@ class NewsAdapter(private val listNews: List<NewsItem>) : RecyclerView.Adapter<N
         return listNews.size
     }
 
-//    fun setNewsItems(items: List<NewsItem>) {
-//        newsItems.clear()
-//        newsItems.addAll(items)
-//        notifyDataSetChanged()
-//    }
-
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.tv_news_title)
         private val contentTextView: TextView = itemView.findViewById(R.id.tv_news_desc)

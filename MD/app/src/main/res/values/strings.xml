@@ -64,4 +64,7 @@
     <string name="email_verification_message">Please Check Your Email For Verification</string>
     <string name="ok">Ok!</string>
     <string name="contact_us">Contact Us</string>
+    <string name="desease_prevention">Desease Prevention</string>
+    <string name="desease_description">Desease Description</string>
+    <string name="plant_desease">Plant Desease</string>
 </resources>
