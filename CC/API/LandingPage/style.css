@@ -273,8 +273,6 @@ button:hover {
 
 
 .menu_content{
-    /* grid-template-columns: repeat(3, max-content);
-    column-gap: 6.5rem; */
     padding-top: 3rem;
     position: relative;
     display: flex;
@@ -486,7 +484,6 @@ img.doc-img{
 
 
 /*-------------- Team -------------------*/
-
 .team{
     background-color: #d43333;
 }
@@ -853,42 +850,12 @@ input[type="radio"]{
     }
 }
 
-@media(max-width:450px){
-    html{
+@media (max-width: 450px) {
+    html {
         font-size: 50%;
     }
-
-
 }
 
-/* @media(max-width: 740px) {
-    .card {
-        flex-direction: column;
-        text-align: center;
-        margin: 0 40px;
-        padding-left: 50px;
-        padding-right: 50px;
-        width: 100%;
-    }
-
-    .card img {
-        margin: -100px 0 30px 0;
-        width: 100%;
-        max-width: 1000px;
-    }
-}  */
-
-/* @media screen and (max-width: 300px){
-    .container{
-        margin-inline: 1rem;
-    }
-
-    .nav{
-        padding-inline: 3rem;
-    }
-
-    .home
-} */
 
 @keyframes morph {
     0%, 100% {

@@ -26,7 +26,7 @@ class_prevent =['Melakukan penanaman dengan bibit yang bebas penyakit sangat pen
                 'Untuk mencegah dan mengatasi penyakit ini, pangkas beberapa cabang dari bagian bawah tanaman untuk memungkinkan aliran udara yang lebih baik di pangkalan kemudian buang dan bakar daun bagian bawah segera setelah penyakit terlihat, terutama setelah batang buah bagian bawah dipetik. Kondisi basah yang hangat mendukung penyakit sehingga fungisida diperlukan untuk memberikan kontrol yang memadai, gunakan produk seperti chlorothalonil, copper oxychloride atau mancozeb. Perawatan harus dimulai saat bercak pertama terlihat dan dilanjutkan dengan interval 10-14 hari hingga 3-4 minggu sebelum panen terakhir. Penting untuk menyemprot kedua sisi daun',
                 'Penyakit ini dapat dikendalikan dengan pengendalian kimia. Setelah terinfeksi virus, tidak ada pengobatan terhadap infeksi sehinggan untuk mengontrol populasi serangga untuk menghindari infeksi virus digunakan insektisida dari keluarga piretroid yang dapat digunakan sebagai pembasmi tanah atau semprotan selama tahap pembibitan dapat mengurangi populasi serangga']
 
-BUCKET_NAME = "model-tomat" # Ganti dengan nama bucket GCP Anda
+BUCKET_NAME = "model-tomatify" # Ganti dengan nama bucket GCP Anda
 
 def download_blob(bucket_name, source_blob_name, destination_file_name):
     """Downloads a blob from the bucket."""
