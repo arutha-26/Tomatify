@@ -8,7 +8,7 @@
 <!--        android:title="Search"-->
 <!--        android:icon="@drawable/ic_search" />-->
 
-    <item android:id="@+id/placeholder"
+    <item android:id="@+id/none"
         android:title="" />
 
 <!--    <item android:id="@+id/miProfile"-->

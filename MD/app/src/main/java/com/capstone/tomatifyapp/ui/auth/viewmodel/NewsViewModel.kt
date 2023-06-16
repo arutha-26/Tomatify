@@ -1,5 +1,6 @@
 package com.capstone.tomatifyapp.ui.auth.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,11 +23,13 @@ class NewsViewModel : ViewModel() {
                     localNewsLiveData.postValue(response.body()?.newsItems)
                 } else {
                     // Handle error
+                    Log.e("NewsViewModel", "Failed to get local news. Error code: ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
                 // Handle failure
+                Log.e("NewsViewModel", "Failed to get local news. Error message: ${t.message}")
             }
         })
 
@@ -40,11 +43,16 @@ class NewsViewModel : ViewModel() {
                     internationalNewsLiveData.postValue(response.body()?.newsItems)
                 } else {
                     // Handle error
+                    Log.e("NewsViewModel", "Failed to get international news. Error code: ${response.code()}")
                 }
+                Log.d("NewsViewModel", "International news response: ${response.body()}")
             }
+
+
 
             override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
                 // Handle failure
+                Log.e("NewsViewModel", "Failed to get international news. Error message: ${t.message}")
             }
         })
 

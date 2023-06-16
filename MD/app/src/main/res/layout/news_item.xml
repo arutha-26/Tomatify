@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,49 +10,72 @@
         android:id="@+id/img_news"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        app:srcCompat="@drawable/plant_news"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="38dp"
-        android:contentDescription="@string/img_tittle" />
+        android:background="@drawable/plant_news"
+        android:contentDescription="@string/img_tittle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteY="38dp" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_news_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/news_tittle"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_news"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_news_desc"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:id="@+id/tv_news_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/desc_news"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_news_source_or_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_news"
+        app:layout_constraintTop_toBottomOf="@id/tv_news_title" />
+
+    <TextView
+        android:id="@+id/tv_news_source_or_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="@string/date_or_source"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_news"
+        app:layout_constraintTop_toBottomOf="@id/tv_news_desc" />
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="5dp"
+        android:background="@color/pc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_news"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/tv_news_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/news_tittle"
-            android:fontFamily="@font/montserrat_bold"
-            android:textSize="16sp"
-            android:textColor="@color/pc"
-            tools:layout_editor_absoluteX="166dp"
-            tools:layout_editor_absoluteY="51dp" />
-
-        <TextView
-            android:id="@+id/tv_news_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/desc_news"
-            android:fontFamily="@font/montserrat_regular"
-            android:textSize="14sp"
-            android:textColor="@color/pc"
-            tools:layout_editor_absoluteX="317dp"
-            tools:layout_editor_absoluteY="209dp" />
-
-        <TextView
-            android:id="@+id/tv_news_source_or_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/date_or_source"
-            android:fontFamily="@font/montserrat_regular"
-            android:textSize="12sp"
-            android:textColor="@color/pc"
-            tools:layout_editor_absoluteX="167dp"
-            tools:layout_editor_absoluteY="165dp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
