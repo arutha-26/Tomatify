@@ -1,0 +1,14 @@
+{
+    "type": "service_account",
+    "project_id": "bharata",
+    "private_key_id": "23ad0faf4f95bfdd4d405d70057d73648dd92302",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCXyfMrLbrESUxL\npWThHpX7xR1Sh7Y169Q2/u5jQKnjvEyaUAwjzsrOlTZuDGBGnvbbb+QfM1YGESNt\nqDcqd3+YNgWJM7z9D6vFJ+qmFMBH4D8bhIhHfaIQdSIH4m+d/0o1MQZN7hqi6bWt\n0AaaV9ItHVkVtpJ9KIMEIec67/PBTYD3Mi+SXGLTAGC+s5AUjtUlUEdLLs7sxWrc\nC80j+GbiKpHhyFkQ47KB7e0pVRzfyhIACsYATIKsbd4btwWu/7fk8Uo1ntwzmJ42\nCd7fOcW0qZIlnNjqtU5SFFiALvOdHFT5BPzXRjXaFutc5ElXYRW2v1GHRBU1VJDg\nrcQIa+2vAgMBAAECggEALr9rvOiglMNeVA3kO9EHsDrNBRX28DRpb2akVL0dlZ3w\nmbX9hymxHF6oHMyC+j0LGhojz9gnrkao+qTMGLAlA+PfYJomommpJVdd1Tie34QY\n64it0BbJSvhIOtVqOubdG/S1VFr4qSQBaD6hSfeyK2LWhPFtvE41y5gFdwlfsTCL\nzJURwzP+CKaMwl9QvdrV4yYyCFlbKvzDNZ15VQAAc+flQCT5YAw0DX7sHea42mh1\nV5woVRSA5IKbSWHTtruEVD6fj/cBm8y1rbgit0yFq4SSBfD9b7KMkunfj18WGaJL\n6Jm5rytPA4caTAXcqITjK+mLB4+i0iajRu/CNwkiAQKBgQDS51Uwd0BLR1YvmLjE\nqGTT5pUm/rw7J8fJzBrQgDxasr5OhWlrdeep/6BfUtVPZZNPTUmrCCV9L+h/5mjz\nAXHiHM/37o1DQg8ID1CJO1XKQUiFpxFNDvX7bU1QWmKM9DlzLFHitNuWo0XbLvWo\npvJasfsrApHIP5oqjQgiLwbIoQKBgQC4PrrSwva8kpudGNa8CRZf1l8hvNRYqTCW\nlMCZx6MEhpQF+Ru88HM0UiuK1YzOYFLEugp3Y78/NT9B2TXCAUYPNv7gP0YjGvUF\nU+d/C7NRFoJCcVD1Egg5WzVlYSxrn1fncerHOZbIbJ4nlBtdo+68BeyMLH0AIIdL\nECId9UGETwKBgQDRXl2vs3LcSIFC1vX2JMWTpwDCqXfrsd4gcsLb4bIIyBEsmjzB\nNVc56E8o0m54V3oZ67wKUhgFYx4IepANTY3kzn2Wv/b0oguSEMH+uiy8kHqSU/xU\n51lCtItgDZpwG7M8pu7ThH/J12Rt5vxw5OsLJk0VsYNPq/Q78a31YYH2gQKBgGPG\nBKHR1o/zzLVcGB0nxqgLjOTWPx/sL1W8JDiitZLj1hEN/4lnpNt2jAHY9zFjVC8Y\nmEZjC9QM376nA8eVrPzcSVXirfagyIMkFr7j9S06RTv55V9xbmaxD89gug9l8NJz\nDDLq6s6Kk3LXb6Jb/hJwGtMl3GNPOjTZ/b+/asVdAoGACPBw/Cj8Hv2uNY/YxZ/F\ncIa0qFZjZUEVuU+Ybyjt4BJIMO6XV08BYoN+SNxSdwisd8X4kD4ZrVd4SLSjXbP5\nFej76msYJzM4PUbqe8AGsl6S2IkzHTGB12Cne54QAbSuWRZYjY2BWDIcwQV9H71u\nOKcdlhCaTbdNyIPb2NHRyBE=\n-----END PRIVATE KEY-----\n",
+    "client_email": "kirim-foto-ke-bucket@bharata.iam.gserviceaccount.com",
+    "client_id": "102932557573321368569",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kirim-foto-ke-bucket%40bharata.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+  
