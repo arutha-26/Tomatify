@@ -80,6 +80,9 @@ Application of Machine learning models through endpoints that have been provided
 * Emulator / External Device
 * USB Cable (to Connect Android Device to your Computer)
 
+## APK Link :
+https://github.com/arutha-26/Tomatify/tree/9d937a0667b49f5d8c557ecd1ca5d9bdac843ce1/APK
+
 ## Installation
 
 ### 1. Clone this Project to your Computer
