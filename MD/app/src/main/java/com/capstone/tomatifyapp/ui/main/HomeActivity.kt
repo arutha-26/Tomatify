@@ -57,15 +57,17 @@ class HomeActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.miSettings -> {
                     val intent = Intent(this, ProfileActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
-                    finish()
                     true
-                }
-                else -> false
+                }R.id.miHome -> {
+                // Tindakan yang ingin dilakukan saat item miHome diklik
+                true
+            }
+                else -> true
             }
         }
 
+        onResume()
     }
     private fun hideActionBar() {
         supportActionBar?.hide()

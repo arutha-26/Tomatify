@@ -1,5 +1,6 @@
 package com.capstone.tomatifyapp.ui.predict
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.MenuItem
 import com.capstone.tomatifyapp.databinding.ActivityResultPredictBinding
 import com.capstone.tomatifyapp.model.Predict
+import com.capstone.tomatifyapp.ui.main.HomeActivity
 
 class ResultPredictActivity : AppCompatActivity() {
 
@@ -42,12 +44,17 @@ class ResultPredictActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressed()
-            return true
+        when (item.itemId) {
+            android.R.id.home -> {
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
+
 
     companion object{
         const val EXTRA_RESULT = "extra_result"

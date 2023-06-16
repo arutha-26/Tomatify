@@ -18,8 +18,8 @@ import javax.inject.Named
 @InstallIn(SingletonComponent::class)
 object ApiConfig {
 
-    const val BASE_URL = "https://api-dot-bharata.et.r.appspot.com/"
-    const val PREDICT_URL = "https://us-central1-noble-district-389013.cloudfunctions.net"
+    const val BASE_URL = "https://api-done-dot-tomatify-388108.et.r.appspot.com"
+    const val PREDICT_URL = "https://us-central1-tomatify-388108.cloudfunctions.net"
 
     fun getApiService(): ApiService {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

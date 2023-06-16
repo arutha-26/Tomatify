@@ -30,9 +30,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val logoutButton = findViewById<Button>(R.id.btn_logout)
         logoutButton.setOnClickListener {
-            // Lakukan proses logout di sini
             PreferenceManager.getDefaultSharedPreferences(this).edit().clear().apply()
-            // Pindah ke halaman login setelah logout
             val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
