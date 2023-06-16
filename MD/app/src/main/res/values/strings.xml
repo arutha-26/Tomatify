@@ -46,4 +46,25 @@
     <string name="user_name">User Name</string>
     <string name="user_email">user email</string>
     <string name="log_out">Log Out</string>
+    <string name="capture">Capture</string>
+    <string name="switch_camera">Switch Camera</string>
+    <string name="predict">Predict</string>
+    <string name="take_photo_or_upload">Take Photo or Upload</string>
+    <string name="gambar_tomato">gambar tomato</string>
+    <string name="predict_your_tomato_plant">Predict Your Tomato Plant</string>
+    <string name="failed_to_take_picture">Failed to take picture</string>
+    <string name="class_predict">class predict</string>
+    <string name="description">Description</string>
+    <string name="prevention">prevention</string>
+    <string name="list_predict">list predict</string>
+    <string name="txt_upload_dari">Upload From</string>
+    <string name="txt_close_dialog">Close\n</string>
+    <string name="txt_camera">Camera</string>
+    <string name="txt_gallery">Gallery</string>
+    <string name="email_verification_message">Please Check Your Email For Verification</string>
+    <string name="ok">Ok!</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="desease_prevention">Desease Prevention</string>
+    <string name="desease_description">Desease Description</string>
+    <string name="plant_desease">Plant Desease</string>
 </resources>

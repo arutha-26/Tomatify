@@ -97,10 +97,11 @@ class LoginActivity : AppCompatActivity() {
                 is Result.Success -> {
                     isLoading(false)
                     val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                    intent.flags =
-                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.putExtra("email", email) // Mengirim data email ke halaman profile
                     startActivity(intent)
                     finish()
+
                 }
                 is Result.Error -> {
                     isLoading(false)

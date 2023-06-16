@@ -2,6 +2,9 @@
 
 package com.capstone.tomatifyapp.ui.auth
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -9,8 +12,11 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.tomatifyapp.R
 import com.capstone.tomatifyapp.databinding.ActivityRegisterBinding
@@ -31,6 +37,8 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(view)
         hideActionBar()
         isLoading(false)
+
+        playAnimation()
 
         binding.edRegisterName.addTextChangedListener(watcher())
         binding.edRegisterEmail.addTextChangedListener(watcher())
@@ -56,8 +64,7 @@ class RegisterActivity : AppCompatActivity() {
                 is Result.Loading -> isLoading(true)
                 is Result.Success -> {
                     isLoading(false)
-                    Toast.makeText(this, getString(R.string.register_success), Toast.LENGTH_LONG).show()
-                    finish()
+                    showEmailVerificationDialog()
                 }
                 else -> {
                     isLoading(false)
@@ -70,6 +77,35 @@ class RegisterActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun showEmailVerificationDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        val dialogView = layoutInflater.inflate(R.layout.custom_dialog_layout, null)
+
+        // Inisialisasi komponen-komponen pada layout custom_dialog_layout
+        val messageTextView = dialogView.findViewById<TextView>(R.id.messageTextView)
+        val okButton = dialogView.findViewById<Button>(R.id.okButton)
+
+        messageTextView.text = getString(R.string.email_verification_message)
+
+        dialogBuilder.setView(dialogView)
+            .setCancelable(false)
+
+        val alertDialog = dialogBuilder.create()
+
+        okButton.setOnClickListener {
+            // Arahkan pengguna ke LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
+
+
 
     private fun hideActionBar() {
         @Suppress("DEPRECATION")
@@ -108,6 +144,27 @@ class RegisterActivity : AppCompatActivity() {
             binding.rlLoading.visibility = View.VISIBLE
         } else {
             binding.rlLoading.visibility = View.GONE
+        }
+    }
+
+    private fun playAnimation() {
+        with(binding) {
+            val imgView = ObjectAnimator.ofFloat(imageView3, View.ALPHA, 1f).setDuration(500)
+            val titleRegis = ObjectAnimator.ofFloat(textView, View.ALPHA, 1f).setDuration(500)
+            val titleName = ObjectAnimator.ofFloat(titleName, View.ALPHA, 1f).setDuration(500)
+            val edName = ObjectAnimator.ofFloat(edRegisterName, View.ALPHA, 1f).setDuration(500)
+            val titleEmail = ObjectAnimator.ofFloat(titleEmail, View.ALPHA, 1f).setDuration(500)
+            val edEmail = ObjectAnimator.ofFloat(edRegisterEmail, View.ALPHA, 1f).setDuration(500)
+            val titlePass = ObjectAnimator.ofFloat(titlePassword, View.ALPHA, 1f).setDuration(500)
+            val edPass = ObjectAnimator.ofFloat(edRegisterPassword, View.ALPHA, 1f).setDuration(500)
+            val btnSignIn = ObjectAnimator.ofFloat(btnRegister, View.ALPHA, 1f).setDuration(500)
+            val notMember = ObjectAnimator.ofFloat(member, View.ALPHA, 1f).setDuration(500)
+            val titleRegister = ObjectAnimator.ofFloat(tvSignin, View.ALPHA, 1f).setDuration(500)
+
+            AnimatorSet().apply {
+                playSequentially(imgView, titleRegis, titleName, edName, titleEmail, edEmail, titlePass, edPass, btnSignIn, notMember, titleRegister)
+                start()
+            }
         }
     }
 

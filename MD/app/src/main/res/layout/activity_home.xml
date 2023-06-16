@@ -7,6 +7,17 @@
     tools:context=".ui.main.HomeActivity"
     android:background="@color/bg_home">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="600dp"
+        android:layout_height="1000dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="264dp"
+        android:contentDescription="@string/tomatobg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/tomato_bg"
+        tools:ignore="VisualLintBounds" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,18 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:alpha="1"
-            android:id="@+id/img_home"
-            android:layout_width="489dp"
-            android:layout_height="413dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginBottom="24dp"
-            android:contentDescription="@string/img_desc"
-            app:layout_constraintBottom_toTopOf="@+id/tabLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/tomato_bg" />
+
 
         <TextView
             android:id="@+id/tv_welcome_home"
@@ -71,6 +71,7 @@
             app:tabMode="fixed" />
 
         <androidx.viewpager2.widget.ViewPager2
+            android:background="@color/white"
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -94,6 +95,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -127,12 +130,13 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/fabPredict"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/scanbutton"
-            android:src="@drawable/ic_add"
-            app:layout_anchor="@id/bottomAppBar" />
+            android:src="@drawable/scan_logo"
+            app:layout_anchor="@id/bottomAppBar"
+            app:maxImageSize="40dp"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
